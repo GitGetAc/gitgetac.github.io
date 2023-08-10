@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        div.square {
+            border: 1px solid gray;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        div.board {
+            display: grid;
+            grid-template-columns: repeat(2, 10rem);
+            grid-template-rows: repeat(2, 10rem);
+        }
+
+
+        div.buttons {
+            width: 20rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        img {
+            width: 90%;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <h3>Eksempel1 - Javascript/Html/Css </h3>
+
+    <div id="app">
+        <!-- Hit kommer koden som vi lager med de funksjonene: showBoardWithLogoSomething -->
+    </div>
+
+    <script>
+
+        showBoardWithLogoDownLeft();
+
+        function showBoardWithLogoUpLeft() {
+            document.getElementById('app').innerHTML = /*HTML*/`
+            <div class="board">
+                <div class="square">
+                    <img src="https://getacademy.no/hubfs/GET_RGB_logo-01-2.png" />
+                </div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+            </div>
+            <div class="buttons">
+                <button disabled>▲</button>
+                <div>
+                    <button disabled>◀</button>
+                    <button onclick="showBoardWithLogoUpRight()">▶</button>
+                </div>
+                <button onclick="showBoardWithLogoDownLeft()">▼</button>
+            </div>
+            `;
+        }
+
+        function showBoardWithLogoDownLeft() {
+            document.getElementById('app').innerHTML = /*HTML*/`
+            <div class="board">
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"><img src="https://getacademy.no/hubfs/GET_RGB_logo-01-2.png" /></div>
+                <div class="square"></div>
+            </div>
+            <div class="buttons">
+                <button onclick="showBoardWithLogoUpLeft()">▲</button>
+                <div>
+                    <button disabled>◀</button>
+                    <button onclick="showBoardWithLogoDownRight()">▶</button>
+                </div>
+                <button disabled">▼</button>
+            </div>
+            `;
+        }
+
+        function showBoardWithLogoUpRight() {
+            document.getElementById('app').innerHTML = /*HTML*/`
+            <div class="board">
+                <div class="square"></div>
+                <div class="square"><img src="https://getacademy.no/hubfs/GET_RGB_logo-01-2.png" /></div>
+                <div class="square"></div>
+                <div class="square"></div>
+            </div>
+            <div class="buttons">
+                <button disabled>▲</button>
+                <div>
+                    <button onclick="showBoardWithLogoUpLeft()">◀</button>
+                    <button disabled>▶</button>
+                </div>
+                <button onclick="showBoardWithLogoDownRight()">▼</button>
+            </div>
+            `;
+        }
+
+        function showBoardWithLogoDownRight() {
+            document.getElementById('app').innerHTML = /*HTML*/`
+            <div class="board">
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"><img src="https://getacademy.no/hubfs/GET_RGB_logo-01-2.png" /></div>
+            </div>
+            <div class="buttons">
+                <button onclick="showBoardWithLogoUpRight()">▲</button>
+                <div>
+                    <button onclick="showBoardWithLogoDownLeft()">◀</button>
+                    <button disabled>▶</button>
+                </div>
+                <button disabled>▼</button>
+            </div>
+            `;
+        }
+
+
+
+    </script>
+
+</body>
+
+</html>
