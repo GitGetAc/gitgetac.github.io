@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        div.overskrift {
+            padding-left: 60px;
+        }
+
+        div {
+            font-size: 60pt;
+        }
+
+        button {
+            font-size: 50pt;
+            background-color: #333333;
+            color: white;
+        }
+
+        #gearShifter {
+            background-color: black;
+            color: white;
+            padding-top: 120px;
+            padding-left: 80px;
+            width: 400px;
+            height: 360px;
+            border-radius: 50%;
+            border: 1px solid black;
+            display: grid;
+            flex-direction: column;
+            grid-template-columns: repeat(8, 40px);
+            grid-template-rows: repeat(6, 40px);
+            grid-template-areas:
+            "gearR gearR gear1 gear1 gear3 gear3 gear5 gear5"
+            "gearR gearR gear1 gear1 gear3 gear3 gear5 gear5"
+            "a b c d e f g h"
+            "i j k l m n o p"
+            "x x gear2 gear2 gear4 gear4 gear6 gear6"
+            "x x gear2 gear2 gear4 gear4 gear6 gear6"
+            ;
+        }
+
+        #gearShifter>div {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        div.left {
+            border-left: 2px solid white;
+        }
+        div.right {
+            border-right: 2px solid white;
+        }
+        div.top {
+            border-top: 2px solid white;
+        }
+        div.bottom {
+            border-bottom: 2px solid white;
+        }
+        .selected {
+            border: 3px dashed hotpink;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="overskrift">GearShifter</div>
+    <div id="gearShifter"></div>
+    <script>
+        showGearShifterNeutral();
+
+        function showGearShifterNeutral(){
+            document.getElementById('gearShifter').innerHTML = /* HTML*/ 
+            `
+            <button style="grid-area: gearR;" onclick="showGearShifterReverse()">R</button>
+            <button style="grid-area: gear1;" onclick="showGearShifter1()">1</button>
+            <button style="grid-area: gear2;">2</button>
+            <button style="grid-area: gear3;">3</button>
+            <button style="grid-area: gear4;">4</button>
+            <button style="grid-area: gear5;">5</button>
+            <button style="grid-area: gear6;">6</button>
+             `;
+            showGearShifterLines();
+        }
+
+        function showGearShifter1(){
+            document.getElementById('gearShifter').innerHTML = /* HTML*/ 
+            `
+                <div style="grid-area: gearR;">R</div>
+                <div style="grid-area: gear1;" class="selected">1</div>
+                <button style="grid-area: gear2;"  onclick="showGearShifter2()">2</button>
+                <div style="grid-area: gear3;">3</div>
+                <div style="grid-area: gear4;">4</div>
+                <div style="grid-area: gear5;">5</div>
+                <div style="grid-area: gear6;">6</div>  
+                <button style="grid-area: x"  onclick="showGearShifterNeutral()">N</button>  
+            `;
+            showGearShifterLines();
+        }
+
+        function showGearShifter2() {
+            document.getElementById('gearShifter').innerHTML = /*HTML*/
+            `
+                <div style="grid-area: gearR;">R</div>
+                <button style="grid-area: gear1;" onclick="showGearShifter1()">1</button>
+                <div style="grid-area: gear2;" class="selected">2</div>
+                <button style="grid-area: gear3;" onclick="showGearShifter3()">3</button>
+                <div style="grid-area: gear4;">4</div>
+                <div style="grid-area: gear5;">5</div>
+                <div style="grid-area: gear6;">6</div>  
+                <button style="grid-area: x" onclick="showGearShifterNeutral()">N</button>            
+      
+            `;
+            showGearShifterLines();
+        }
+
+        function showGearShifter3() {
+            document.getElementById('gearShifter').innerHTML = /*HTML*/
+            `
+                <div style="grid-area: gearR;">R</div>
+                <div style="grid-area: gear1;">1</div>
+                <button style="grid-area: gear2;" onclick="showGearShifter2()">2</button>
+                <div style="grid-area: gear3;" class="selected">3</div>
+                <button style="grid-area: gear4;" onclick="showGearShifter4()">4</button>
+                <div style="grid-area: gear5;">5</div>
+                <div style="grid-area: gear6;">6</div>  
+                <button style="grid-area: x" onclick="showGearShifterNeutral()">N</button>            
+      
+            `;
+            showGearShifterLines();
+        }
+
+        function showGearShifter4() {
+            document.getElementById('gearShifter').innerHTML = /*HTML*/
+            `
+                <div style="grid-area: gearR;">R</div>
+                <div style="grid-area: gear1;">1</div>
+                <div style="grid-area: gear2;">2</div>
+                <button style="grid-area: gear3;" onclick="showGearShifter3()">3</button>
+                <div style="grid-area: gear4;" class="selected">4</div>
+                <button style="grid-area: gear5;" onclick="showGearShifter5()">5</button>
+                <div style="grid-area: gear6;">6</div>  
+                <button style="grid-area: x" onclick="showGearShifterNeutral()">N</button>            
+      
+            `;
+            showGearShifterLines();
+        }
+
+        function showGearShifter5() {
+            document.getElementById('gearShifter').innerHTML = /*HTML*/
+            `
+                <div style="grid-area: gearR;">R</div>
+                <div style="grid-area: gear1;">1</div>
+                <div style="grid-area: gear2;">2</div>
+                <div style="grid-area: gear3;">3</div>
+                <button style="grid-area: gear4;" onclick="showGearShifter4()">4</button>
+                <div style="grid-area: gear5;" class="selected">5</div>
+                <button style="grid-area: gear6;" onclick="showGearShifter6()">6</button>  
+                <button style="grid-area: x" onclick="showGearShifterNeutral()">N</button>            
+      
+            `;
+            showGearShifterLines();
+        }
+
+        function showGearShifter6() {
+            document.getElementById('gearShifter').innerHTML = /*HTML*/
+            `
+                <div style="grid-area: gearR;">R</div>
+                <div style="grid-area: gear1;">1</div>
+                <div style="grid-area: gear2;">2</div>
+                <div style="grid-area: gear3;">3</div>
+                <div style="grid-area: gear4;">4</div>
+                <button style="grid-area: gear5;" onclick="showGearShifter5()">5</button>
+                <div style="grid-area: gear6;" class="selected">6</div>  
+                <button style="grid-area: x" onclick="showGearShifterNeutral()">N</button>            
+      
+            `;
+            showGearShifterLines();
+        }
+
+        function showGearShifterReverse() {
+            document.getElementById('gearShifter').innerHTML = /*HTML*/
+            `
+                <div style="grid-area: gearR;" class="selected">R</div>
+                <div style="grid-area: gear1;">1</div>
+                <div style="grid-area: gear2;">2</div>
+                <div style="grid-area: gear3;">3</div>
+                <div style="grid-area: gear4;">4</div>
+                <div style="grid-area: gear5;">5</div>
+                <div style="grid-area: gear6;">6</div>  
+                <button style="grid-area: x" onclick="showGearShifterNeutral()">N</button>            
+      
+            `;
+            showGearShifterLines();
+        }
+
+        function showGearShifterLines() {
+            document.getElementById('gearShifter').innerHTML += /* HTML*/ 
+            `
+            <div style="grid-area: a"></div>
+            <div style="grid-area: b" class="left bottom"></div>
+            <div style="grid-area: c" class="right bottom"></div>
+            <div style="grid-area: d" class=" bottom"></div>
+            <div style="grid-area: e" class=" bottom right"></div>
+            <div style="grid-area: f" class=" bottom"></div>
+            <div style="grid-area: g" class=" bottom right"></div>
+            <div style="grid-area: h"></div>
+            <div style="grid-area: i"></div>
+            <div style="grid-area: j"></div>
+            <div style="grid-area: k" class="right "></div>
+            <div style="grid-area: l"></div>
+            <div style="grid-area: m" class=" right"></div>
+            <div style="grid-area: n"></div>
+            <div style="grid-area: o" class=" right"></div>
+            <div style="grid-area: p"></div>
+
+            `;
+        }
+    </script>
+</body>
+</html>
