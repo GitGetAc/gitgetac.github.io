@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        div.page {
+            font-size: x-large;
+            background-color: lightblue; margin: -8px;
+            display: grid;
+            height: 100vh;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 8fr 1fr;
+            grid-template-areas: 'header header' 'varer handlekurv' 'footer footer';
+        }
+
+        div.header {
+            grid-area: header;
+            text-align: center;
+            background-color: lightcoral;
+        }
+
+        div.varer {
+            grid-area: varer;
+            background-color: lightseagreen;
+        }
+
+        div.handlekurv {
+            grid-area: handlekurv;
+            background-color: lightgray;
+        }
+
+        div.footer {
+            grid-area: footer;
+            background-color: blanchedalmond;
+        }
+
+        /*Mindre en 600px width*/
+        @media only screen and (max-width: 600px) {
+            div.page {
+                grid-template-columns: 1fr;
+                grid-template-rows: 1fr 1fr 5fr 1fr;
+                grid-template-areas: 'header' 'varer' 'handlekurv' 'footer';
+            }
+        }
+
+        .buttons {
+            background-color: green;
+            font-size: xx-large;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <div class="page">
+    
+        <div class="header">Get Butikk<br/>
+            (Du kan enkelt legge til eller fjerne fra varer i handlekurv)</div>
+        
+        <div class="varer">Kunnskaper
+            <button id="visSjulVarer" onclick="visSjulVarer()">Vis/Sjul varer</button><br/>
+            
+            <div id="buttonsVarer">
+                Trykk på de elementene som skal legges til i handlekurven!<br/><br/>
+            
+            </div>
+        </div>
+
+        <div class="handlekurv">Handlekurv
+            <button id="visSjulHandlekurvKnapp" onclick="visSjulHandlekurv()">Vis/Sjul handlekurv</button><br/>
+            
+            <div id="buttonsHandlekurv">
+                Trykk på de elementene som skal fjernes fra handlekurven!<br/><br/>
+            
+            
+            
+            </div>
+        </div>
+        <div class="footer">Team 3</div>
+
+    </div>
+        
+
+
+        
+</body>
