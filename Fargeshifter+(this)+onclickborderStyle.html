@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+        .mainDiv{
+            width: fit-content;
+            height: auto;
+            background-color: lightcoral;
+            display: flex;
+            align-items: center;
+            text-align: center;
+        }
+
+        div{
+            margin: 5px;
+            height: 120px;
+            width: 120px;
+        }
+        
+        button{
+            margin: 3px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="mainDiv">
+    Trykk på en av de fargene så trykker
+    <br/>du på valg knappen
+    <br/>(fjern fargen med den andre knappen)
+    
+    <!-- .classList.remove() .classList.toggle() (eller .classList.add()) -->
+    
+    <div style="background-color: red; border-style: none;" onclick="clicked(this)">Red Background</div>
+    <div style="background-color: blue; border-style: none;" onclick="clicked(this)">Blue Background</div>
+    <div style="background-color: gray; border-style: none;" onclick="clicked(this)">Gray background</div>
+    <div style="background-color: darkgreen; border-style: none;" onclick="clicked(this)">Darkgreen background</div>
+    <div>
+        <button onclick="fjernClicked()">Fjern valgt bakgunnsfarge</button><br/>        
+        <button onclick="valgFargeClicked()">Velg valgt bakgrunnsfarge</button><br/>        
+
+    </div>
+    </div>
+    
+    <script>document.getElementById
+        //Opprinnelig farge
+        let BakgrunnsFarge = 'white';
+        //Opprinnelig variabel verdi må settes først, for at vi kan tilordne verdi inn i funksjonen
+        let forrigeDiv = document.body; //vagy let forrigeDiv = document.getElementById('mainDiv');
+
+        console.log('Eredeti background: ' + BakgrunnsFarge);
+        //Ez beteg!
+        function clicked(divClicked){
+            divClicked.style.borderStyle = 'solid';
+            forrigeDiv.style.borderStyle = 'none';
+            forrigeDiv = divClicked;
+            BakgrunnsFarge = divClicked.style.backgroundColor;
+
+            console.log(BakgrunnsFarge);
+
+        }
+
+        function fjernClicked(){
+            location.reload();
+        }
+
+        function valgFargeClicked(){
+            document.body.style.backgroundColor = BakgrunnsFarge;
+        }
+
+    </script>
+
+</body>
+</html>
