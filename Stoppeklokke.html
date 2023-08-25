@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id="mainDiv"></div>
+    
+    <script>
+
+        //Model
+        //Timer inint
+        let myTimer;
+        let sekunder = 0;
+        let rundeTid = 0;
+        let rundeTempTid = 0;
+        let runder = 0;
+        let rundeTidIsClicked = false;
+        
+        // tellerDiv = document.getElementById('teller');
+        
+
+        updateView();
+
+        //Controller
+
+        function tell(){
+            // Timer call
+            myTimer = setInterval(økeSekRundetid,1000);
+        }
+
+        function økeSekRundetid() {
+            sekunder++;
+            rundeTempTid++;
+            updateView();
+        }
+
+        function rundeTidClicked(){
+            runder++;
+            rundeTid = rundeTempTid;
+            updateView();
+            rundeTempTid = 0;
+        }
+        function pauseClicked(){
+            //Timer pause
+            clearInterval(myTimer);
+        }
+
+        function updateView(){
+
+                mainDiv.innerHTML = /*HTML*/`
+                <div id="teller">Teller: ${sekunder} <button onclick="tell()">Start/Fortsett</button></div><br/>
+                <button onclick="pauseClicked()">Pause</button>
+                <button onclick="location.reload()">Resett</button>
+                <button onclick="rundeTidClicked()">Runder</button>
+                <div id="rundeTid">${runder}.runde : RundeTid: ${rundeTid}s</div><br/>
+                `;
+                }
+                
+    </script>
+</body>
+</html>
