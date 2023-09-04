@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="app"></div>
+
+    <script>
+        //Model
+        let poeng = 0;
+        let tall1 = 'Tall1';
+        let tall2 = 'Tall2';
+        let sammenLigningsOperator;
+        
+        let app = document.getElementById('app');
+        let userInputFieldValue;
+
+        
+
+        //View
+        updateView();
+
+        function updateView(){
+            console.log(poeng);
+
+            if(poeng < 0){
+                app.innerHTML = /*HTML*/`
+                <h3>GAME OVER</h3><br/>
+                <button onclick="location.reload()">Start på Nytt!</button>
+                `;
+            }
+            else {
+                app.innerHTML = /*HTML*/ `
+            
+                <div><h3>Poeng: ${poeng}</h3></div><br/>
+                <div><img src="img/Krokodille.png"/></div><br/>
+                <h3>${tall1}</h3>
+                <input id="userInputField" type="text" value=""><br/>
+                <h3>${tall2}</h3>
+                <button onclick="registerUserAnswer()">Submit</button><button onclick="generateNumbers()">Generate Random Numbers</button>
+            `;
+            }         
+        }
+
+        //Controller
+        function generateNumbers(){
+            tall1 = 1 + Math.floor(Math.random() * 10)
+            tall2 = 1 + Math.floor(Math.random() * 10)
+
+            if(tall1 < tall2) sammenLigningsOperator = '<';
+            else if(tall1 > tall2) sammenLigningsOperator = '>';
+            else sammenLigningsOperator = '=';
+            
+            console.log(tall1, sammenLigningsOperator, tall2);
+            updateView();
+        }
+
+        function registerUserAnswer(){
+            userInputFieldValue = document.getElementById('userInputField').value;
+            if(userInputFieldValue == sammenLigningsOperator){ poeng++; generateNumbers();}
+            else {poeng--; generateNumbers();}
+        }
+    </script>
+</body>
+</html>
