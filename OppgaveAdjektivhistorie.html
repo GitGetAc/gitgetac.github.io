@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"></div>
+    
+    <script>
+        //Model (Variabler)
+        let app;
+        let stedsNavn = '.....';
+        let yrkeNavn = '.....';
+        let hobbyNavn = '.....';
+        let matNavn = '.....';
+
+
+        //View (Oppdatering av hva vi ser)
+        updateView();
+
+        function updateView(){
+
+
+            app = /*HTML*/ `
+            <p>Jeg bor på <b>${stedsNavn}</b> og jobber som <b>${yrkeNavn}</b>.</p>
+            <p>Min favorithobby er <b>${hobbyNavn}</b> og favoritmaten min er <b>${matNavn}</b>.</p>
+            
+            <div class="buttonDiv">
+                <h4>Bosted</h4>
+                <button onclick="getAndSetBosted(this.innerHTML)">østlandet</button>&nbsp;<button onclick="getAndSetBosted(this.innerHTML)">vestlandet</button>
+                <h4>Yrker</h4>
+                <button onclick="getAndSetYrke(this.innerHTML)">lagermedarbeider</button>&nbsp;<button onclick="getAndSetYrke(this.innerHTML)">software utvikler</button>
+                <h4>Hobbyer</h4>
+                <button onclick="getAndSetHobby(this.innerHTML)">å spille gitar</button>&nbsp;<button onclick="getAndSetHobby(this.innerHTML)">å spille videospill</button>
+                <h4>Matretter</h4>
+                <button onclick="getAndSetMat(this.innerHTML)">pizza</button>&nbsp;<button onclick="getAndSetMat(this.innerHTML)">kylling gryte</button>
+            </div>
+
+            `;
+
+            document.getElementById('app').innerHTML = app;
+        }
+
+        //Controller (Kontroll funksjoner som oppdaterer innholdet i appen)
+        function getAndSetBosted(buttonPress){
+            stedsNavn = buttonPress;
+
+            updateView();
+        }
+
+        function getAndSetYrke(buttonPress){
+            yrkeNavn = buttonPress;
+
+            updateView();
+        }
+
+        function getAndSetHobby(buttonPress){
+            hobbyNavn = buttonPress;
+
+            updateView();
+        }
+
+        function getAndSetMat(buttonPress){
+            matNavn = buttonPress;
+
+            updateView();
+        }
+    </script>
+</body>
+</html>
