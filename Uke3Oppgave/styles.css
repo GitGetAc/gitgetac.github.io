@@ -1,0 +1,75 @@
+/* body{
+    overflow:hidden;
+    
+    
+}
+
+.road{
+    display: block; 
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    background-repeat: repeat-y;
+    animation: road 10s infinite linear;
+}
+@keyframes road
+{
+    100%{
+        transform: translateY(-1200px); 
+    }
+    
+}
+
+.car{
+    display: flex;
+    justify-content: center;
+    right: 500px;
+    top: 700px;
+    transform: translateY(-50px);
+    position: absolute;
+    z-index: 2;
+}
+.car img {
+    width: 100%;
+    animation: car 5s linear infinite;
+}
+@keyframes car
+{
+    100%{
+        transform: translateY(-1200px); 
+    }
+}
+
+
+
+.btn{
+    margin-top: 50vh;
+} */
+
+.mainDiv{
+    border-radius: 5%;
+    width: fit-content;
+    background-color: lightgray;
+    display: flex;
+    text-align: center;
+}
+
+.veiDiv{
+    margin: 3%;
+    height: 600px;
+    width: 800px;
+    background-color: white;
+    border-radius: 5%;
+}
+.menuDiv{
+    padding: 5%;
+    
+}
+
+button{
+    width: 100px;
+    height: 30px;
+    margin: 3px;
+}
