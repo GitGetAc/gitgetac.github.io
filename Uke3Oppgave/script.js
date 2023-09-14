@@ -1,32 +1,34 @@
 //Model
 //Tellere//////////////
-let myTimer;
-let sekunder = 120;
-let kompisNedTeller = 15;
-let objektNedTeller = 6;
-let started = false;
+let myTimer;                        //Dette er til hovedteller instanser som kjører alle funksjonene i spillet
+let sekunder = 120;                 //Spillet kjører i 120 sekunder
+let kompisNedTeller = 15;           //Vi lager tilfeldige kompiser hver 15. sekund
+let objektNedTeller = 6;            //Vi lager nye objekter hver 6. sekund
+let started = false;                //Denne variabelen trenger vi til Start knappen for å hindre flere instanser av hovedtelleren
 //////////////////////
 let app = document.getElementById('app');
-let kulhetsPoeng = 20; //Vi starter med 20 poeng
+let kulhetsPoeng = 20;               //Vi starter med 20 poeng
 //Objekter-kompiser
-let kompiser = ['Per','Lars'];
+let kompiser = ['Per','Lars'];      //Liste med kompiser
 let riktigHilsen;
-let hilsenVarRiktig = false;
-let harHilst = false;
-let objekter = ['bensin', 'penger','kebab','alkohol'];
-let tilfeldigObjekt = '';
-let tilfeldigKompis = '';
+let hilsenVarRiktig = false;        //Startverdien til hilsenVarRiktig
+let harHilst = false;               //Startverdien til harHilst
+let objekter = ['bensin', 'penger','kebab','alkohol']; //Liste med objekter
+let tilfeldigObjekt = '';   //Startverdien til tilfeldigObjekt
+let tilfeldigKompis = '';   //Startverdien til tilfeldigKompis
 
 
 //View
 updateView();
 
 function updateView(){
+    //Hvis hovedtelleren er lik 0, eller kulhetsPoeng er lik 0, eller mindre
     if(sekunder == 0 || kulhetsPoeng <= 0){
         gameOver();
     }
+    //kulhetsPoeng er lik 100, eller mer
     else if(kulhetsPoeng >= 100){
-        gameOverMedHundrePoeng();
+        gameOverMedHundreEllerOverPoeng();
     }
     else{
         //Her kommer hele applikasjonen som viser seg inn i nettleseren
@@ -43,26 +45,28 @@ function updateView(){
             <h4>Tilfeldige hendelser:</h4>
         <div/>
             `;
-
+            //Denne delen slår seg på når vi har trykket på den riktige Hilsen knapp
             if(hilsenVarRiktig == true && harHilst == true){
                 document.getElementById('hendelserDiv').innerHTML += /*HTML*/ `<div id="kompisDiv">Hilsen var riktig! Du kan kjøre videre.</div><br/>`;
                 hilsenVarRiktig = false;
                 harHilst = false;
             }
+            ////Denne delen slår seg på, når vi ikke har hilst (det var ikke noen å hilse på) 
             else{
+                //Denne delen slår seg på etter at vi har laget en tilfeldig kompis
                 if(tilfeldigKompis != ''){
                 document.getElementById('hendelserDiv').innerHTML += /*HTML*/ `<div id="kompisDiv"><img src="img/${tilfeldigKompis}.png" width="150" height="150"></div><br/>
                 <h4>Hils på han!</h4>
                 <button onclick="btnController(this.innerHTML)">Hilsen 1</button>
                 <button onclick="btnController(this.innerHTML)">Hilsen 2</button>
                 <button onclick="btnController(this.innerHTML)">Hilsen 3</button>`;
-
+                //Denne delen slår seg på etter at vi har trykket på feil Hilsen knapp
                 if(hilsenVarRiktig == false && harHilst == true){
                     document.getElementById('hendelserDiv').innerHTML += /*HTML*/ `<div id="kompisDiv">Hilsen var ikke riktig! Du mistet 5 poeng!</div><br/>`;
                     harHilst = false;
                 }
             }
-
+            //Denne delen slår seg på etter at vi har laget et tilfeldig objekt
             if(tilfeldigObjekt != ''){
                 document.getElementById('hendelserDiv').innerHTML += /*HTML*/ `<div id="objektDiv"><img src="img/${tilfeldigObjekt}.png" width="150" height="150"></div><br/>
                 <button onclick="btnController(this.innerHTML)">Plukk opp</button>
@@ -83,7 +87,7 @@ function gameOver(){
     clearInterval(myTimer);
 }
 
-function gameOverMedHundrePoeng(){
+function gameOverMedHundreEllerOverPoeng(){
     app.innerHTML = `
     <h1>GAME OVER</h1><br/>
     Du har ${kulhetsPoeng} kulhetspoeng!<br/>
@@ -96,7 +100,7 @@ function gameOverMedHundrePoeng(){
 //Controller
 //Startknapp event
 function startSpillet(){
-    // Timer call
+    // Starte hoved timeren ved å trykke på Start knapp
     if(started){
         return
     } else{
@@ -107,11 +111,13 @@ function startSpillet(){
 }
 
 function Spill() {
+    //Her teller vi ned hovedteller, kompis, og objektnedteller
     sekunder--;
     kompisNedTeller--;
     objektNedTeller--;
     
-    //Returnere tilfeldige kompis og tilbakestille kompisNedtelleren
+    //Når kompis nedteller er lik 0 da lager vi en tilfeldig kompis og en tilfeldig hilsen som kompisen aksepterer
+    //Så tilbakestiller vi kompisNedtelleren
     if(kompisNedTeller == 0){
         tilfeldigKompisFunksjon();
         //Lage tilfeldig hilsen mellom 1-3 som gjør at vi kan kjøre videre
@@ -121,8 +127,7 @@ function Spill() {
 
         kompisNedTeller += 15;
     }
-    //Returnere tilfeldige objekt og tilbakestille objetktNedtelleren
-    //Regne ut kulhetsPoeng for de enkelte objekter
+    //Når objektnedtelleren er lik 0 da lager vi en tilfeldig objekt og tilbakstiller vi objektNedTeller-en
     if(objektNedTeller == 0){
         tilfeldigObjektFunksjon();
 
@@ -131,20 +136,20 @@ function Spill() {
     updateView();
 }
 
-
+//Returnere tilfeldig kompis fra liste i model
 function tilfeldigKompisFunksjon(){
     ////Tilfeldig kompis fra kompis liste 0-1
     tilfeldigKompis = kompiser[Math.floor(Math.random() * 2)];
     return tilfeldigKompis;
 }
-
+//Returnere tilfeldig objekt fra liste i model
 function tilfeldigObjektFunksjon(){
     //Tilfeldig objekt fra objekt liste 0-3
     tilfeldigObjekt = objekter[Math.floor(Math.random() * 4)];
     return tilfeldigObjekt;
     
 }
-
+//Sjekke hva knapp vi trykte på, og hva det gjør med utfallet
 function btnController(buttonPressed){
     let btnPressed;
     btnPressed = buttonPressed;
