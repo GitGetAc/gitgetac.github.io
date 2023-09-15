@@ -9,7 +9,7 @@ let started = false;                //Denne variabelen trenger vi til Start knap
 let app = document.getElementById('app');
 let kulhetsPoeng = 20;               //Vi starter med 20 poeng
 //Objekter-kompiser
-let kompiser = ['Per','Lars'];      //Liste med kompiser
+let kompiser = ['per','lars'];      //Liste med kompiser
 let riktigHilsen;
 let hilsenVarRiktig = false;        //Startverdien til hilsenVarRiktig
 let harHilst = false;               //Startverdien til harHilst
