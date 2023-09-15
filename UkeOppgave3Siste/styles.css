@@ -1,0 +1,118 @@
+/* body{
+    overflow:hidden;
+    
+    
+}
+
+.road{
+    display: block; 
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    background-repeat: repeat-y;
+    animation: road 10s infinite linear;
+}
+@keyframes road
+{
+    100%{
+        transform: translateY(-1200px); 
+    }
+    
+}
+
+.car{
+    display: flex;
+    justify-content: center;
+    right: 500px;
+    top: 700px;
+    transform: translateY(-50px);
+    position: absolute;
+    z-index: 2;
+}
+.car img {
+    width: 100%;
+    animation: car 5s linear infinite;
+}
+@keyframes car
+{
+    100%{
+        transform: translateY(-1200px); 
+    }
+}
+
+
+
+.btn{
+    margin-top: 50vh;
+} */
+
+.mainDiv{
+    border-radius: 5%;
+    width: fit-content;
+    background-color: lightgray;
+    display: flex;
+    text-align: center;
+}
+
+.veiDiv{
+    margin: 3%;
+    height: 600px;
+    width: 800px;
+    background-color: gray;
+    border-radius: 5%;
+    background-image: url('img/vei.png');
+    background-position: 0% 0%;
+    background: stretch no-repeat;
+    animation: 0.3s linear infinite roadAnimation;
+    z-index: 1;
+}
+
+@keyframes roadAnimation{
+    from {background-position: 0% 100%;}
+    to {background-position: 0% 0%;}
+}
+/*.veiDiv::before{
+    content: '';
+    width: 100%;
+    height: 20px;
+    background: linear-gradient(to top, white 0px, white 70% gray 70% gray 100%);
+    position: absolute;
+    top: 50%;
+    transform: translateX(-50%);
+    background-size: 130px 15px; 
+}*/
+.menuDiv{
+    padding: 5%;
+    
+}
+
+button{
+    width: 100px;
+    height: 30px;
+    margin: 3px;
+}
+
+.bil{
+    
+    padding-top: 200px;
+    justify-content: center;
+    z-index: 10;
+    position: relative;
+}
+
+@keyframes bilen{
+    0% {
+        transform: scale(1);
+    } 50% {
+        transform: scale(0.95);
+    }
+    100%{
+        transform: scale(0.9);
+    }
+}  
+
+#endbutton{
+    opacity: 1;
+}
